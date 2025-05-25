@@ -216,6 +216,14 @@ public partial class Formium : IRenderHandler
     {
         if (width <= 0 || height <= 0) return;
 
+        if(type == CefPaintElementType.View && _offscreenViewRect.HasValue)
+        {
+            var dx = Math.Abs( _offscreenViewRect.Value.Width - width);
+            var dy = Math.Abs(_offscreenViewRect.Value.Height - height);
+            if (dx > 1 || dy > 1) return;
+        }
+        
+
         CurrentFormStyle.OnOffscreenPaint?.Invoke(type,buffer,width,height, _offscreenIsPopupShown,_offscreenPopupRect);
     }
 

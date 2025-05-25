@@ -238,9 +238,12 @@ internal class MyWindow : Formium
     {
         var style = builder.UseSystemForm();
 
+        style.Size = new System.Drawing.Size(1440, 900);
+
         // 移除系统窗体的标题栏
         // To remove the title bar of a system window and achieve a borderless form
-        style.BackdropType = SystemFormBackdropType.Surface;
+        style.TitleBar = false;
+        style.BackdropType = SystemFormBackdropType.Mica;
 
         // 指定系统深浅色主题模式，默认将自动检测当前系统的深浅色主题模式。也可以手动指定
         // Specify the system's light or dark theme mode. By default, it will automatically detect the current system's theme mode. It can also be manually specified.
